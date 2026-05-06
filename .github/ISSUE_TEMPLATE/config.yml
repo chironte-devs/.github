@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "Consultas / Soporte"
+    url: "https://github.com/orgs/chironte-devs/discussions"
+    about: "Usá Discussions para preguntas generales"

@@ -1,0 +1,33 @@
+name: "🐛 Bug"
+description: Reportar un bug
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: "¿Qué pasó?"
+      description: "Descripción clara del bug"
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: "¿Qué esperabas que pase?"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: "Pasos para reproducir"
+      description: "1. ... 2. ... 3. ..."
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: "Entorno"
+      description: "prod / staging / local + versión"
+  - type: textarea
+    id: logs
+    attributes:
+      label: "Logs / evidencia"

@@ -1,0 +1,29 @@
+name: "✨ Feature"
+description: Proponer una mejora / funcionalidad
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: "Problema"
+      description: "¿Qué problema queremos resolver?"
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: "Propuesta"
+      description: "¿Qué haríamos?"
+    validations:
+      required: true
+  - type: textarea
+    id: ac
+    attributes:
+      label: "Criterios de aceptación"
+      description: "Checklist de condiciones para darlo por terminado"
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: "Notas / dependencias"
