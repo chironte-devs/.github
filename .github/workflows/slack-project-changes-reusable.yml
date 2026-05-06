@@ -181,5 +181,5 @@ jobs:
                 text:
                   type: mrkdwn
                   text: |
-                    ${{ join(fromJson(steps.diff.outputs.changes).* , "\n") }}
+                    ${{ steps.diff.outputs.changesMrkdwn }}
 
