@@ -156,6 +156,8 @@ jobs:
 
             core.setOutput('changeCount', String(changes.length));
             core.setOutput('changes', JSON.stringify(changes.slice(0, 20))); // cap
+            const lines = changes.slice(0,20).map(c => `• ${c.from||'∅'} → *${c.to||'∅'}* — <${c.url}|${c.type}${c.number?(' #'+c.number):''}: ${c.title}>`);
+            core.setOutput('changesMrkdwn', lines.join('\n'));
 
       - name: Post changes to Slack
         if: steps.diff.outputs.changeCount != '0'
