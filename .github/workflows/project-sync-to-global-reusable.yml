@@ -21,7 +21,7 @@ on:
       global_status_field_name:
         required: false
         type: string
-        default: Workflow
+        default: Status
     secrets:
       GH_PROJECTS_TOKEN:
         required: true
