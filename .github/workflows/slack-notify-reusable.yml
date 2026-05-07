@@ -1,0 +1,78 @@
+name: Notify Slack (reusable)
+
+on:
+  workflow_call:
+    inputs:
+      slack_channel_id:
+        required: true
+        type: string
+      repo_name:
+        required: true
+        type: string
+      ref:
+        required: false
+        type: string
+        default: ""
+      event_name:
+        required: false
+        type: string
+        default: ""
+      actor:
+        required: false
+        type: string
+        default: ""
+      run_url:
+        required: false
+        type: string
+        default: ""
+      pr_url:
+        required: false
+        type: string
+        default: ""
+      pr_title:
+        required: false
+        type: string
+        default: ""
+      pr_number:
+        required: false
+        type: string
+        default: ""
+    secrets:
+      SLACK_BOT_TOKEN:
+        required: true
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post to Slack
+        uses: slackapi/slack-github-action@v2.1.0
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            channel: "${{ inputs.slack_channel_id }}"
+            text: "GitHub notification"
+            blocks:
+              - type: header
+                text:
+                  type: plain_text
+                  text: "${{ inputs.repo_name }}"
+              - type: section
+                text:
+                  type: mrkdwn
+                  text: |
+                    *Event:* ${{ inputs.event_name }}
+                    *Actor:* ${{ inputs.actor }}
+                    *Ref:* ${{ inputs.ref }}
+              - type: section
+                text:
+                  type: mrkdwn
+                  text: |
+                    *Run:* ${{ inputs.run_url }}
+              - type: section
+                text:
+                  type: mrkdwn
+                  text: |
+                    *PR:* ${{ inputs.pr_url }}
+                    ${{ inputs.pr_title }}
